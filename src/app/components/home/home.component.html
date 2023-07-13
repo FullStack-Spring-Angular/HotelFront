@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="background-image mb-4">
+        <div class="search-container container-fluid">
+          <h1 class="text-center">B&uacute;squeda de habitaciones</h1>
+          <div class="row justify-content-center">
+            <div class="col-md-4">
+              <div class="form-group mx-3 my-2">
+                <label for="price">Precio:</label>
+                <input type="text" class="form-control" id="price" [(ngModel)]="searchFilters.price" placeholder="Insertar precio...">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group mx-3 my-2">
+                <label for="roomType">Tipo de habitación:</label>
+                <select class="form-control" id="roomType" [(ngModel)]="searchFilters.roomType">
+                  <option value="">Todos</option>
+                  <option *ngFor="let type of roomTypes" [value]="type">{{ type }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-4">
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="search-button btn btn-primary">Buscar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+    <div class="mt-4">
+        <div id="room-cards" class="row">
+            <div class="col-md-4" *ngFor="let room of rooms">
+              <div class="card">
+                <img class="card-img-top" src="https://www.xotels.com/wp-content/uploads/2020/03/hotel-room-type-xotels-hotel-management-company-800x599.webp" alt="Imagen de la habitación"> <!-- src="{{ room.imageUrl }}" -->
+                <div class="card-body">
+                  <h5 class="card-title">{{ room.name }}</h5>
+                  <p class="card-text">{{ room.description }}</p>
+                  <p class="card-text">Precio: ${{ room.price }}</p>
+                  <a *ngIf="isLoggedIn(); else loginLink" routerLink="/reservas" class="btn btn-primary">Reservar</a>
+                  <ng-template #loginLink>
+                    <a routerLink="/login" class="btn btn-primary">Reservar</a>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div id="loading" class="text-center" *ngIf="isLoading">
+      <h5>Cargando...</h5>
+    </div>
+
+</div>
+  

@@ -1,0 +1,35 @@
+.background-image {
+    background-image: url('https://img.freepik.com/vector-gratis/elegante-banner-lineas-rojas-digitales-brillantes_1017-23964.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 234px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  
+  .search-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .search-input {
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  .search-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
