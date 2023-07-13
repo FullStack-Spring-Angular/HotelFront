@@ -7,19 +7,19 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home">Habitaciones</a>
+          <a class="nav-link" routerLink="/home"  *ngIf=" isLoggedIn() && userService.roleMatch(['User']) || !isLoggedIn()">Habitaciones</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home">Eventos</a>
+          <a class="nav-link" routerLink="/home"  *ngIf=" isLoggedIn() && userService.roleMatch(['User']) || !isLoggedIn()">Eventos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home">Gastronom&iacute;a</a>
+          <a class="nav-link" routerLink="/home"  *ngIf=" isLoggedIn() && userService.roleMatch(['User']) || !isLoggedIn()">Gastronom&iacute;a</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home">Servicios</a>
+          <a class="nav-link" routerLink="/home"  *ngIf=" isLoggedIn() && userService.roleMatch(['User']) || !isLoggedIn()">Servicios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home">Contacto</a>
+          <a class="nav-link" routerLink="/home"  *ngIf=" isLoggedIn() && userService.roleMatch(['User']) || !isLoggedIn()">Contacto</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/admin"
