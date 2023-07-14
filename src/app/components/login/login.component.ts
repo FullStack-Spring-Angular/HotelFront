@@ -25,13 +25,7 @@ export class LoginComponent {
       (response: any) => {
         const { email, username , roles: [{ name }]} = response.usuarios;
         const role = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-
-        const user: UserDTO = {
-          username: username,
-          email: email,
-          role: role,
-          // Otros campos relacionados con el usuario
-        };
+        
         this.userAuthService.setUser(response.usuarios);
         this.userAuthService.setRoles(role);
         this.userAuthService.setToken(response.accessToken);

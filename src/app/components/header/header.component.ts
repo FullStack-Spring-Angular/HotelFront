@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserAuthService } from 'src/app/services/user-auth.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,7 +16,8 @@ export class HeaderComponent {
   constructor(
     private userAuthService: UserAuthService,
     private router: Router,
-    public userService: UserService
+    public userService: UserService,
+    private toastService: ToastrService
   ) {}
 
   public isLoggedIn() {
@@ -23,8 +25,15 @@ export class HeaderComponent {
   }
 
   public logout() {
-    this.userAuthService.clear();
-    this.router.navigate(['/home']);
+    this.userService.logout().subscribe(
+      (response: any)=>{
+        console.log(response);
+        const { message, statusCode} = response;
+        this.toastService.success("Correctamente", message);
+        this.userAuthService.clear();
+        this.router.navigate(['/home']);
+      }
+    );
   }
 
   public getUsername(){

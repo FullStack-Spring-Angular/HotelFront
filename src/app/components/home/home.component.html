@@ -31,13 +31,13 @@
        
     <div class="mt-4">
         <div id="room-cards" class="row">
-            <div class="col-md-4" *ngFor="let room of rooms">
+            <div class="col-md-4" *ngFor="let habitacion of habitaciones">
               <div class="card">
                 <img class="card-img-top" src="https://www.xotels.com/wp-content/uploads/2020/03/hotel-room-type-xotels-hotel-management-company-800x599.webp" alt="Imagen de la habitación"> <!-- src="{{ room.imageUrl }}" -->
                 <div class="card-body">
-                  <h5 class="card-title">{{ room.name }}</h5>
-                  <p class="card-text">{{ room.description }}</p>
-                  <p class="card-text">Precio: ${{ room.price }}</p>
+                  <h5 class="card-title">{{ habitacion.nombre }}</h5>
+                  <p class="card-text">{{ habitacion.descripcion }}</p>
+                  <p class="card-text">Precio: ${{ habitacion.precio }}</p>
                   <a *ngIf="isLoggedIn(); else loginLink" routerLink="/reservas" class="btn btn-primary">Reservar</a>
                   <ng-template #loginLink>
                     <a routerLink="/login" class="btn btn-primary">Reservar</a>

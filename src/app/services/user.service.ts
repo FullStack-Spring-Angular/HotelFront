@@ -15,28 +15,21 @@ export class UserService {
   ) {}
 
   public login(loginData: any) {
-    return this.httpclient.post(environment.AUTH_API + '/login', loginData, {
+    return this.httpclient.post(environment.HOTEL_API + 'auth/login', loginData, {
       headers: this.requestHeader,
     });
   }
   public register(registerData: any) {
-    return this.httpclient.post(environment.AUTH_API + '/register', registerData, {
+    return this.httpclient.post(environment.HOTEL_API + 'auth/register', registerData, {
       headers: this.requestHeader,
     });
   }
 
- /*  public forUser() {
-    return this.httpclient.get(this.PATH_OF_API + '/forUser', {
-      responseType: 'text',
+  public logout() {
+    return this.httpclient.post(environment.HOTEL_API + 'auth/logout', {
+      headers: this.requestHeader,
     });
   }
-
-
-  public forAdmin() {
-    return this.httpclient.get(this.PATH_OF_API + '/forAdmin', {
-      responseType: 'text',
-    });
-  } */
 
   public roleMatch(allowedRoles: any): boolean {
     let isMatch = false;
