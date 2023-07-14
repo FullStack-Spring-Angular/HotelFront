@@ -21,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReservaComponent } from './components/reserva/reserva.component';
+import { RegisterHabitacionComponent } from './components/admin/register-habitacion/register-habitacion.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ReservaComponent } from './components/reserva/reserva.component';
     UserComponent,
     ProfileComponent,
     RegisterComponent,
-    ReservaComponent
+    ReservaComponent,
+    RegisterHabitacionComponent
   ],
   imports: [
     BrowserModule,
