@@ -8,6 +8,7 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterComponent } from './components/register/register.component';
+import { ReservaComponent } from './components/reserva/reserva.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +18,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard], data: { roles: ['Admin', 'User']} },
   { path: 'register', component: RegisterComponent },
+  { path: 'reserva', component: ReservaComponent },
   { path: 'forbidden', component: ForbiddenComponent }
+
 ];
 
 @NgModule({
