@@ -1,5 +1,48 @@
-<div class="container mt-5">
-    <div class="card text-center" style="color: green; padding: 20px;">
-        <h1>You are Admin</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-3 col-lg-2 sidebar">
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2 border-bottom">
+          <a class="nav-link" (click)="navigateToSection('reservas')">Reservas</a>
+        </li>
+        <li class="nav-item mb-2 border-bottom">
+          <a class="nav-link" (click)="navigateToSection('habitaciones')">Habitaciones disponibles</a>
+        </li>
+        <li class="nav-item mb-2 ">
+          <a class="nav-link" (click)="navigateToSection('rooms')">Rooms</a>
+        </li>
+      </ul>
     </div>
+    <div class="col-12 col-md-9 col-lg-10 content mt-4" >
+      <div class="text-center">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <header class="jumbotron">
+                <div class="container">
+                  <h1>Bienvenido al Hotel XYZ</h1>
+                  <p>Experimenta una estancia inolvidable</p>
+                  <a class="btn btn-primary btn-lg" routerLink="#cta">Reservar ahora</a>
+                </div>
+              </header>
+            </div>
+          </div>      
+      </div>
+      
+      <div id="dashboard" class="section" *ngIf="currentSection === 'reservas'">
+        <h2>reservas</h2>
+        <!-- Contenido de la sección de Dashboard -->
+      </div>
+
+      <div id="reservations" class="section" *ngIf="currentSection === 'habitaciones'">
+        <h2>Reservations</h2>
+        <!-- Contenido de la sección de Reservations -->
+      </div>
+
+      <div id="rooms" class="section" *ngIf="currentSection === 'rooms'">
+        <h2>Rooms</h2>
+        <!-- Contenido de la sección de Rooms -->
+      </div>
+    </div>
+  </div>
 </div>

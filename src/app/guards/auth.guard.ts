@@ -38,7 +38,7 @@ export class AuthGuard implements CanActivate {
       
       if (isTokenExpired) {
         this.userAuthService.clear();
-        this.toastrService.info('Su sesión ha caducado','Información'); 
+        this.toastrService.info('Su sesión ha caducado','Información', { timeOut: 2000}); 
         this.router.navigate(['/login']);
         return false;
       }

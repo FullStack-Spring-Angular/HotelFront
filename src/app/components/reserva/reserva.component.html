@@ -1,5 +1,8 @@
 <div class="container">
+  <div class="mt-4 mb-4">
     <h2>Reserva de habitación</h2>
+  </div>
+  <div class="mb-4">
     <ul class="nav nav-pills nav-justified">
       <li class="nav-item">
         <a class="nav-link" [class.active]="step === 1">
@@ -20,76 +23,80 @@
         </a>
       </li>
     </ul>
-    <div class="tab-content">
-      <div id="step1" class="tab-pane fade" [class.show]="step === 1" [class.active]="step === 1">
-        <h4>Paso 1: Información personal</h4>
-        <form (ngSubmit)="nextStep()" #step1Form="ngForm">
-          <div class="form-group">
-            <label for="nombre">Nombre completo:</label>
-            <input type="text" id="nombre" name="nombre" class="form-control" required [(ngModel)]="reserva.nombre">
+  </div>
+    
+  <div class="tab-content">
+    <div id="step1" class="tab-pane fade" [class.show]="step === 1" [class.active]="step === 1">
+      <h4>Paso 1: Información personal</h4>
+      <form (ngSubmit)="nextStep()" #step1Form="ngForm">
+        <div class="form-group">
+          <label for="nombre">Nombre completo:</label>
+          <input type="text" id="nombre" name="nombre" class="form-control" required [(ngModel)]="reserva.nombre">
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo electrónico:</label>
+          <input type="email" id="correo" name="correo" class="form-control" required [(ngModel)]="reserva.correo">
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" id="telefono" name="telefono" class="form-control" required [(ngModel)]="reserva.telefono">
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-primary" type="submit">Siguiente</button>
+        </div>
+      </form>
+    </div>
+    <div id="step2" class="tab-pane fade" [class.show]="step === 2" [class.active]="step === 2">
+      <h4>Paso 2: Fechas y tipo de habitación</h4>
+      <form (ngSubmit)="nextStep()" #step2Form="ngForm">
+        <div class="form-group">
+          <label for="fecha-checkin">Fecha de check-in:</label>
+          <input type="date" id="fecha-checkin" name="fecha_checkin" class="form-control" required [(ngModel)]="reserva.fechaCheckin">
+        </div>
+        <div class="form-group">
+          <label for="fecha-checkout">Fecha de check-out:</label>
+          <input type="date" id="fecha-checkout" name="fecha_checkout" class="form-control" required [(ngModel)]="reserva.fechaCheckout">
+        </div>
+        <div class="form-group" *ngFor="let habitacion of habitaciones; let i=index">
+          <label for="tipo-habitacion{{ i }}">Tipo de habitación {{ i + 1 }}:</label>
+          <select id="tipo-habitacion{{ i }}" name="tipo_habitacion{{ i }}" class="form-control" required [(ngModel)]="habitacion.tipoHabitacion">
+            <option value="individual">Individual</option>
+            <option value="doble">Doble</option>
+            <option value="suite">Suite</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" type="button" (click)="addHabitacion()">Añadir habitación</button>
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-primary mr-4" type="button" (click)="prevStep()">Anterior</button>
+          <button class="btn btn-primary" type="submit" *ngIf="step !== 3" (click)="numHabitaciones()">Siguiente</button>
+        </div>
+      </form>
+    </div>
+    <div id="step3" class="tab-pane fade" [class.show]="step === 3" [class.active]="step === 3">
+      <h4>Paso 3: Extras</h4>
+      <form (ngSubmit)="reservaForm()" #step3Form="ngForm">
+        <div class="form-group">
+          <label>Extras:</label><br>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="desayuno" name="desayuno" [(ngModel)]="reserva.extras.desayuno">
+            <label class="form-check-label" for="desayuno">Desayuno</label>
           </div>
-          <div class="form-group">
-            <label for="correo">Correo electrónico:</label>
-            <input type="email" id="correo" name="correo" class="form-control" required [(ngModel)]="reserva.correo">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="spa" name="spa" [(ngModel)]="reserva.extras.spa">
+            <label class="form-check-label" for="spa">Acceso al spa</label>
           </div>
-          <div class="form-group">
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" class="form-control" required [(ngModel)]="reserva.telefono">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="estacionamiento" name="estacionamiento" [(ngModel)]="reserva.extras.estacionamiento">
+            <label class="form-check-label" for="estacionamiento">Estacionamiento</label>
           </div>
-          <div class="form-group">
-            <button class="btn btn-primary float-right" type="submit">Siguiente</button>
-          </div>
-        </form>
-      </div>
-      <div id="step2" class="tab-pane fade" [class.show]="step === 2" [class.active]="step === 2">
-        <h4>Paso 2: Fechas y tipo de habitación</h4>
-        <form (ngSubmit)="nextStep()" #step2Form="ngForm">
-          <div class="form-group">
-            <label for="fecha-checkin">Fecha de check-in:</label>
-            <input type="date" id="fecha-checkin" name="fecha_checkin" class="form-control" required [(ngModel)]="reserva.fechaCheckin">
-          </div>
-          <div class="form-group">
-            <label for="fecha-checkout">Fecha de check-out:</label>
-            <input type="date" id="fecha-checkout" name="fecha_checkout" class="form-control" required [(ngModel)]="reserva.fechaCheckout">
-          </div>
-          <div class="form-group">
-            <label for="tipo-habitacion">Tipo de habitación:</label>
-            <select id="tipo-habitacion" name="tipo_habitacion" class="form-control" required [(ngModel)]="reserva.tipoHabitacion">
-              <option value="individual">Individual</option>
-              <option value="doble">Doble</option>
-              <option value="suite">Suite</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary" type="button" (click)="prevStep()">Anterior</button>
-            <button class="btn btn-primary float-right" type="submit" *ngIf="step !== 3">Siguiente</button>
-          </div>
-        </form>
-      </div>
-      <div id="step3" class="tab-pane fade" [class.show]="step === 3" [class.active]="step === 3">
-        <h4>Paso 3: Extras</h4>
-        <form (ngSubmit)="submitForm()" #step3Form="ngForm">
-          <div class="form-group">
-            <label>Extras:</label><br>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="desayuno" name="desayuno" [(ngModel)]="reserva.extras.desayuno">
-              <label class="form-check-label" for="desayuno">Desayuno</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="spa" name="spa" [(ngModel)]="reserva.extras.spa">
-              <label class="form-check-label" for="spa">Acceso al spa</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="estacionamiento" name="estacionamiento" [(ngModel)]="reserva.extras.estacionamiento">
-              <label class="form-check-label" for="estacionamiento">Estacionamiento</label>
-            </div>
-          </div>
-          <div class="form-group text-center">
-            <button class="btn btn-primary mr-4" type="button" (click)="prevStep()">Anterior</button>
-            <button class="btn btn-primary" type="submit">Reservar</button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-primary mr-4" type="button" (click)="prevStep()">Anterior</button>
+          <button class="btn btn-primary" type="submit">Reservar</button>
+        </div>
+      </form>
     </div>
   </div>
-  
+</div>

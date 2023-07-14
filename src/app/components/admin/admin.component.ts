@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AdminComponent {
 
+  currentSection: string;
+
+  navigateToSection(section: string) {
+    this.currentSection = section;
+  }
 }

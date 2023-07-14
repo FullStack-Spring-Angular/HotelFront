@@ -29,7 +29,7 @@ export class HeaderComponent {
       (response: any)=>{
         console.log(response);
         const { message, statusCode} = response;
-        this.toastService.success("Correctamente", message);
+        this.toastService.success("Correctamente", message, { timeOut: 700});
         this.userAuthService.clear();
         this.router.navigate(['/home']);
       }

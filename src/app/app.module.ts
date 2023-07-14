@@ -44,7 +44,7 @@ import { ReservaComponent } from './components/reserva/reserva.component';
     RouterModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     AuthGuard,

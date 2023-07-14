@@ -29,10 +29,13 @@ export class LoginComponent {
         this.userAuthService.setUser(response.usuarios);
         this.userAuthService.setRoles(role);
         this.userAuthService.setToken(response.accessToken);
+        console.log(role);
+        
         if (role === 'Admin') {
           this.router.navigate(['/admin']);
         } else {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/reserva']);
+
         }
       },
       (error) => {

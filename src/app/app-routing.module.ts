@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard], data: { roles: ['Admin', 'User']} },
   { path: 'register', component: RegisterComponent },
-  { path: 'reserva', component: ReservaComponent },
+  { path: 'reserva', component: ReservaComponent, canActivate:[AuthGuard], data: { roles: ['Admin', 'User']} },
   { path: 'forbidden', component: ForbiddenComponent }
 
 ];

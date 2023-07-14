@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="background-image mb-4">
+    <div class="background-image mt-4 mb-4">
         <div class="search-container container-fluid">
           <h1 class="text-center">B&uacute;squeda de habitaciones</h1>
           <div class="row justify-content-center">
@@ -22,7 +22,10 @@
           <div class="row justify-content-center">
             <div class="col-md-4">
               <div class="d-flex justify-content-center">
-                <button type="submit" class="search-button btn btn-primary" routerLink="/reserva">RESERVAR AHORA >></button>
+                <button *ngIf="isLoggedIn(), else loginLink" routerLink="/reserva" type="submit" class="search-button btn btn-primary" routerLink="/reserva">RESERVAR AHORA >></button>
+                <ng-template #loginLink>
+                  <a routerLink="/login" class="btn btn-primary">RESERVAR AHORA >></a>
+                </ng-template>
               </div>
             </div>
           </div>
