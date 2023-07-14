@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReservaComponent } from './components/reserva/reserva.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     UserComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    ReservaComponent
   ],
   imports: [
     BrowserModule,
