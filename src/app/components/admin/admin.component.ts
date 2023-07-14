@@ -9,6 +9,11 @@ export class AdminComponent {
 
   currentSection: string;
 
+  constructor(){}
+
+  ngOnInit(){
+    this.currentSection = 'reservas';
+  }
   navigateToSection(section: string) {
     this.currentSection = section;
   }
