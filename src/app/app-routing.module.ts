@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
+import { RegisterHabitacionComponent } from './components/admin/register-habitacion/register-habitacion.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard], data: { roles: ['Admin', 'User']} },
   { path: 'register', component: RegisterComponent },
   { path: 'reserva', component: ReservaComponent, canActivate:[AuthGuard], data: { roles: ['Admin', 'User']} },
+  { path: 'register/habitacion', component: RegisterHabitacionComponent, canActivate:[AuthGuard], data: { roles: ['Admin']} },
   { path: 'forbidden', component: ForbiddenComponent }
 
 ];

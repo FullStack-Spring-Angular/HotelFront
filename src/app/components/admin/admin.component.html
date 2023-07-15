@@ -79,26 +79,51 @@
           <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" formControlName="nombre" class="form-control" required>
+            <div *ngIf="habitacionForm.get('nombre').invalid && (habitacionForm.get('nombre').dirty || habitacionForm.get('nombre').touched)" class="text-danger">
+              <div *ngIf="habitacionForm.get('nombre').errors['required']">
+                El nombre es requerido.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="descripcion">Descripción:</label>
             <textarea id="descripcion" formControlName="descripcion" class="form-control" required></textarea>
+            <div *ngIf="habitacionForm.get('descripcion').invalid && (habitacionForm.get('descripcion').dirty || habitacionForm.get('descripcion').touched)" class="text-danger">
+              <div *ngIf="habitacionForm.get('descripcion').errors['required']">
+                La descripción es requerida.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="numCamas">Número de Camas:</label>
             <input type="number" id="numCamas" formControlName="numCamas" class="form-control" required>
+            <div *ngIf="habitacionForm.get('numCamas').invalid && (habitacionForm.get('numCamas').dirty || habitacionForm.get('numCamas').touched)" class="text-danger">
+              <div *ngIf="habitacionForm.get('numCamas').errors['required']">
+                El número de camas es requerido.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="numBanos">Número de Baños:</label>
             <input type="number" id="numBanos" formControlName="numBanos" class="form-control" required>
+            <div *ngIf="habitacionForm.get('numBanos').invalid && (habitacionForm.get('numBanos').dirty || habitacionForm.get('numBanos').touched)" class="text-danger">
+              <div *ngIf="habitacionForm.get('numBanos').errors['required']">
+                El número de baños es requerido.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="precio">Precio:</label>
             <input type="number" id="precio" formControlName="precio" class="form-control" required>
+            <div *ngIf="habitacionForm.get('precio').invalid && (habitacionForm.get('precio').dirty || habitacionForm.get('precio').touched)" class="text-danger">
+              <div *ngIf="habitacionForm.get('precio').errors['required']">
+                El precio es requerido.
+              </div>
+            </div>
           </div>
           <div class="text-center">
             <button type="button" class="btn btn-secondary mr-3" data-bs-dismiss="modal">Cancelar</button>
-            <button class="btn btn-primary" type="submit">Registrar</button>
+            <button class="btn btn-primary" type="submit" [disabled]="!formularioValido()">Registrar</button>
           </div>
         </form>
       </div>
@@ -106,3 +131,4 @@
   </div>
 </div>
 
+<app-register-habitacion [dataRegistroHabitacion] = "this.datosHabitacion" *ngIf="enviar"></app-register-habitacion>

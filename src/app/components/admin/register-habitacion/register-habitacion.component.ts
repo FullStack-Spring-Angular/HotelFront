@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HabitacionesService } from 'src/app/services/habitaciones.service';
 
 @Component({
   selector: 'app-register-habitacion',
@@ -8,25 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterHabitacionComponent {
 
-  habitacionForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {
-    this.habitacionForm = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      numCamas: ['', Validators.required],
-      numBanos: ['', Validators.required],
-      precio: ['', Validators.required]
-    });
-  }
+  @Input() dataRegistroHabitacion;
 
 
-  registrarHabitacion(): void {
-    if (this.habitacionForm.valid) {
-      // Aquí puedes realizar el envío de los datos al servidor o ejecutar la lógica necesaria
-      console.log(this.habitacionForm.value);
-      // Reiniciar el formulario después de enviar los datos
-      this.habitacionForm.reset();
-    }
+  ngOnInit() {
+    console.log(this.dataRegistroHabitacion);
   }
 }

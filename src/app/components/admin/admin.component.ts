@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,8 @@ export class AdminComponent {
 
   currentSection: string;
   habitacionForm: FormGroup;
-  
+  datosHabitacion;
+  enviar: boolean = false;
 
   habitaciones:any[] = [
     {
@@ -41,14 +42,14 @@ export class AdminComponent {
   
 
   constructor(private formBuilder: FormBuilder) {
-    this.habitacionForm = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      numCamas: ['', Validators.required],
-      numBanos: ['', Validators.required],
-      precio: ['', Validators.required]
-    });
-  }
+  this.habitacionForm = this.formBuilder.group({
+    nombre: ['', Validators.required],
+    descripcion: ['', Validators.required],
+    numCamas: ['', Validators.required],
+    numBanos: ['', Validators.required],
+    precio: ['', Validators.required]
+  });
+}
 
   ngOnInit(){
 
@@ -57,11 +58,14 @@ export class AdminComponent {
 
   registrarHabitacion(): void {
     if (this.habitacionForm.valid) {
-      // Aquí puedes realizar el envío de los datos al servidor o ejecutar la lógica necesaria
-      console.log(this.habitacionForm.value);
-      // Reiniciar el formulario después de enviar los datos
+      this.datosHabitacion = this.habitacionForm.value;
+      this.enviar = true;
       this.habitacionForm.reset();
     }
+  }
+
+  formularioValido (): boolean {
+    return this.habitacionForm.valid ? true : false;
   }
 
   editarHabitacion(id: number): void {
